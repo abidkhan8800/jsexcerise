@@ -297,4 +297,33 @@ function nth2(list, n) {
 }
 
 // console.log(arrayToList([10,20,30]));
-console.log(nth2(arrayToList([10,20,30]), 10));
+// console.log(nth2(arrayToList([10,20,30]), 10));
+
+function deepEqual(a, b) {
+  if (a === b) return true;
+  console.log(a === b);
+  
+  if (a == null || typeof a != "object" ||
+      b == null || typeof b != "object") return false;
+  console.log(a == null || typeof a != "object" ||
+  b == null || typeof b != "object")    
+
+  let keysA = Object.keys(a), keysB = Object.keys(b);
+
+  if (keysA.length != keysB.length) return false;
+  console.log(keysA.length != keysB.length)
+
+  for (let key of keysA) {
+    if (!keysB.includes(key) || !deepEqual(a[key], b[key])) return false;
+  }
+
+  return true;
+}
+
+let obj = {here: {is: "an"}, object: 2};
+// console.log(deepEqual(obj, obj));
+// → true
+//console.log(deepEqual(obj, {here: 1, object: 2}));
+// // → false
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// → true
